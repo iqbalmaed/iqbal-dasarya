@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+
+    <style>
+      .col-5, .col-7 {
+        border: 1px solid #000;
+      }
+    </style>
+  </head>
+  <body>
+<h1>Contact Manager</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col-5">
+        <isindex>Full Name</isindex><br>
+        <input type="text" id="fname"/><br><br>
+
+        <isindex>Phone Number</isindex><br>
+        <input type="text" id="pnumber"/>
+        <br><br>
+
+        <isindex>Email Address</isindex><br>
+        <input type="text" id="email"/>
+        <br><br>
+        
+        <isindex>Gender</isindex><br>
+        <div id="genders">
+          <input type="radio" id="r1" name="gender" value="Male"> Male
+          <input type="radio" id="r2" name="gender" value="Female"> Female
+        </div>
+          <button id="tombolku">Click me</button>
+
+      </div>
+    <div class="col-7">
+        
+
+        <div class="row">
+          <input type= "text" name = "search" id="finder" placeholder="Search ..." />
+          <select id="genderfind">
+            <option value="" disabled selected>Select your option</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+           
+          </select>
+        </div>
+        <div class="row">
+          <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Full Name</th>
+      <th scope="col">Phone Number</th>
+      <th scope="col">Email</th>
+      <th scope="col">Gender</th>
+    </tr>
+  </thead>
+  <tbody id="table-row">
+
+  </tbody>
+</table>
+
+        </div>
+    </div>
+
+    </div>
+    
+  </div>   
+  
+
+   
+  
+</div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
