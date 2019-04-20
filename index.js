@@ -51,8 +51,9 @@ const contacts = [
 // }
 
 //pencarian gender
-function gendernya(){
-const  x = document.getElementById("pilihgender").value;
+const y = document.getElementById('pilihgender');
+y.addEventListener('change', function() {
+var x = y.value;
 console.log(x)
 if (x == "Male") {
   let baru = contacts.filter(function(item) {
@@ -68,8 +69,12 @@ if (x == "Male") {
   var Table = document.getElementById("table-row");
       Table.innerHTML = ""
   view(baru);
-}
+};
+}, false);
 
+
+
+function gendernya(){
 }
 
 // mengambil data
