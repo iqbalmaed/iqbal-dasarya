@@ -51,13 +51,25 @@ const contacts = [
 // }
 
 //pencarian gender
-const serverId = document.getElementById("genderfind").value;
-if (serverId == "Male") {
-  alert("Benar");
-  let baru = contacts.find(function(item) {
+function gendernya(){
+const  x = document.getElementById("pilihgender").value;
+console.log(x)
+if (x == "Male") {
+  let baru = contacts.filter(function(item) {
     return item.gender == "Male";
   });
+  var Table = document.getElementById("table-row");
+      Table.innerHTML = ""
   view(baru);
+}if (x == "Female") {
+  let baru = contacts.filter(function(item) {
+    return item.gender == "Female";
+  });
+  var Table = document.getElementById("table-row");
+      Table.innerHTML = ""
+  view(baru);
+}
+
 }
 
 // mengambil data
@@ -134,7 +146,7 @@ function edit(data, id) {
 }
 
 function remove(data, idnya) {
-  // array.fil`ter
+  // array.filter
   var removeIndex = contacts
     .map(function(item) {
       return item.id;
