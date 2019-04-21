@@ -36,8 +36,6 @@ var contacts = [
   }
 ];
 
-db = [...contacts];
-
 // Pencari with keyword
     document.getElementById("finder").addEventListener("change",function(){
       var keyword=document.getElementById("finder").value;
@@ -57,7 +55,7 @@ db = [...contacts];
 const y = document.getElementById('pilihgender');
 y.addEventListener('change', function() {
 var x = y.value;
-console.log(x)
+
 if (x == "Male") {
   let baru = contacts.filter(function(item) {
     return item.gender == "Male";
@@ -113,6 +111,7 @@ function view(contacts) {
 }
 
 document.getElementById("tombolku").addEventListener("click", function() {
+  if (document.getElementById("tombolku").name=="databaru"){
   const fullName1 = document.getElementById("fname");
   const phoneNumber1 = document.getElementById("pnumber");
   const email1 = document.getElementById("email");
@@ -150,25 +149,30 @@ document.getElementById("tombolku").addEventListener("click", function() {
 
   // )|| isNaN(phoneNumber1.value)||isNaN(email1.value)
   //     || isNaN(gender1.value))
-});
-
-function edit(data, id) {
-  // array.filter
-  console.log(typeof id);
-  let baru = contacts.find(function(item) {
-    return item.id == 1;
-  });
-  baru.fullName = data.fullName;
-  baru.phoneNumber = data.phoneNumber;
-  baru.email = data.email;
-  baru.gender = data.gender;
-  console.log(contacts);
-
-  // spread operator ...
 }
+else{
+  cariId= document.getElementById("tombolku").value;
+  console.log(cariId)
+  new1=contacts.find(hasil => hasil.id == cariId);
+  new1.fullName = document.getElementById("fname").value;
+  new1.phoneNumber = document.getElementById("pnumber").value;
+  new1.email = document.getElementById("email").value;
 
-const hapusya = (id) => {
+  var gender1;
+  if (document.getElementById("r1").checked) {
+    gender1 = document.getElementById("r1").value;
+  } else if (document.getElementById("r2").checked) {
+    gender1 = document.getElementById("r2").value;
+  }
+  new1.gender = gender1;
+  document.getElementById("table-row").innerHTML = "";
+  view(contacts);
 
+}
+  }
+  );
+
+window.hapusya = function(id){
     var new1= contacts.filter(hasil => hasil.id != id);
     contacts= new1;
     document.getElementById("table-row").innerHTML = "";
@@ -176,17 +180,34 @@ const hapusya = (id) => {
       };
 
 
-function remove(data, idnya) {
-  // array.filter
-  var removeIndex = contacts
-    .map(function(item) {
-      return item.id;
-    })
-    .indexOf(idnya);
-  // spread operator ....
-  contacts.splice(removeIndex, 1);
-  console.log(contacts);
-}
+window.editya = function(id){
+    var new1= contacts.filter(hasil => hasil.id == id);
+    document.getElementById("fname").value= new1[0].fullName;
+    document.getElementById("pnumber").value= new1[0].phoneNumber;
+    document.getElementById("email").value= new1[0].email;
+    document.getElementById("tombolku").value= new1[0].id;
+    document.getElementById("tombolku").name= "gantidata";
+
+    console.log(new1[0].gender);
+    if (new1[0].gender == "Male"){
+      document.getElementById("r1").checked = true;
+    }else {
+      document.getElementById("r2").checked=true;
+    }   
+};
+  
+
+// function remove(data, idnya) {
+//   // array.filter
+//   var removeIndex = contacts
+//     .map(function(item) {
+//       return item.id;
+//     })
+//     .indexOf(idnya);
+//   // spread operator ....
+//   contacts.splice(removeIndex, 1);
+//   console.log(contacts);
+// }
 
 // ambil data dari html
 function addData() {
@@ -197,6 +218,9 @@ function addData() {
   console.log(ponenumber);
   console.log(emaile);
 }
+
+
+//ED==
 
 //hapus button
 // document.getElementsByName("hapus").onclick= function(){
