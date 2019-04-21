@@ -85,11 +85,28 @@ function view(contacts) {
     let phoneNumber = row.insertCell(2);
     let email = row.insertCell(3);
     let gender = row.insertCell(4);
+   
     id.innerHTML = contacts.id;
     fullName.innerHTML = contacts.fullName;
     phoneNumber.innerHTML = contacts.phoneNumber;
     email.innerHTML = contacts.email;
     gender.innerHTML = contacts.gender;
+
+    // membuat action
+   let action = row. insertCell(5);
+    var element1 = document.createElement("button");
+    var element2 = document.createElement("button");
+    element1.value = contacts.id;
+    element1.innerHTML= "edit";
+    element1.setAttribute("onclick", "editya(this.id)");
+    element1.name = "edit";
+    action.appendChild(element1);
+
+    element2.value = contacts.id;
+    element2.innerHTML= "delete";
+    action.appendChild(element2);
+    element2.name= "hapus";
+    element2.setAttribute("onclick", "hapusya(this.value)");
   });
 }
 
@@ -170,7 +187,13 @@ function addData() {
   console.log(emaile);
 }
 
+//hapus button
+// document.getElementsByName("hapus").onclick= function(){
+//   cariID = document.getElementsByName("hapus").value;
+//   console.log(cariID);
+// };
+
 view(contacts);
-//add(id_baru);
-//edit(id_baru, 1);
-//remove(contacts, 1);
+function hapusya(id) {
+  alert(id)
+}
