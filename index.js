@@ -36,19 +36,20 @@ const contacts = [
   }
 ];
 
-// //pencarian
-// var searchKey;
-// if(document.getElementById("finder").length!=0){
-//   searchKey = document.getElementById("finder");
-//   console.log(searchKey.value)
-//   function filterIt(contacts, searchKey) {
-//   return arr.filter(function(obj) {
-//     return Object.keys(obj).some(function(key) {
-//       return obj[key].includes(searchKey);
-//     })
-//   });
-// }
-// }
+// Pencari with keyword
+    document.getElementById("finder").addEventListener("change",function(){
+      var keyword=document.getElementById("finder").value;
+      var Table = document.getElementById("table-row");
+      Table.innerHTML = ""
+      view(search(contacts,keyword));
+
+      function search(arr,keyword){
+        return arr.filter(function(obj){
+          return obj["fullName"].includes(keyword);
+        });
+
+      }
+    })
 
 //pencarian gender
 const y = document.getElementById('pilihgender');
@@ -73,9 +74,6 @@ if (x == "Male") {
 }, false);
 
 
-
-function gendernya(){
-}
 
 // mengambil data
 function view(contacts) {
