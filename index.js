@@ -1,4 +1,4 @@
-var contacts = [
+let contacts = [
   {
     id: 1,
     fullName: "Genna Arnli",
@@ -36,6 +36,7 @@ var contacts = [
   }
 ];
 
+
 // Pencari with keyword
     document.getElementById("finder").addEventListener("change",function(){
       var keyword=document.getElementById("finder").value;
@@ -50,7 +51,6 @@ var contacts = [
 
       }
     })
-
 //pencarian gender
 const y = document.getElementById('pilihgender');
 y.addEventListener('change', function() {
@@ -110,8 +110,10 @@ function view(contacts) {
   });
 }
 
-document.getElementById("tombolku").addEventListener("click", function() {
-  if (document.getElementById("tombolku").name=="databaru"){
+// Tombol Save , dapat berupa data baru atau edit data
+document.getElementById("tombolku").addEventListener("click", function() { 
+
+  if (document.getElementById("tombolku").name=="databaru"){ //seleksi apakah merupakan data baru
   const fullName1 = document.getElementById("fname");
   const phoneNumber1 = document.getElementById("pnumber");
   const email1 = document.getElementById("email");
@@ -124,8 +126,14 @@ document.getElementById("tombolku").addEventListener("click", function() {
     gender1 = document.getElementById("r2");
   }
 
+  //mencari id terkecil yang belum ada
+  //dengan cara menncari dengan nilai max[dari id yg sudah ada]
+  var nameArray = contacts.map(function (el) { return el.id; });
+  var cariid = contacts.map(function (el) { return el.id; });
+  const idbaru= Math.max(...cariid)+1;
+
   const tambah = {
-    id: 6,
+    id: idbaru,
     fullName: fullName1.value,
     phoneNumber: phoneNumber1.value,
     email: email1.value,
@@ -142,15 +150,14 @@ document.getElementById("tombolku").addEventListener("click", function() {
     alert("must be filled out");
     return false;
   } else {
+    let contactsbaru = [...contacts, tambah];
+     contacts= contactsbaru;
     document.getElementById("table-row").innerHTML = "";
-    let result = [...contacts, tambah];
-    view(result);
+    view(contacts);
   }
 
-  // )|| isNaN(phoneNumber1.value)||isNaN(email1.value)
-  //     || isNaN(gender1.value))
 }
-else{
+else{                                                         //Jika merupakan Edit data
   cariId= document.getElementById("tombolku").value;
   document.getElementById("tombolku").name="databaru"
   console.log(cariId)
@@ -168,24 +175,19 @@ else{
   new1.gender = gender1;
    document.getElementById("table-row").innerHTML = "";
     view(contacts);
-
-  //set value input kosong
- 
+};
+//set value input kosong
   document.getElementById("fname").value = "";
   document.getElementById("pnumber").value = "";
   document.getElementById("email").value = "";
   document.getElementById("r1").checked= false;
   document.getElementById("r2").checked =false;
-
-
-  
-
-}
   }
   );
 
-window.hapusya = function(id){
-    var new1= contacts.filter(hasil => hasil.id != id);
+// fungsi hapus dari tiap tombol hapus per data
+window.hapusya = function(id){                                
+    var new1= contacts.filter(hasil => hasil.id != id);       //hanya akan menyimpan data yang id nya tidak terhapus
     contacts= new1;
     document.getElementById("table-row").innerHTML = "";
     view(contacts)
@@ -208,37 +210,6 @@ window.editya = function(id){
     }   
 };
   
-
-// function remove(data, idnya) {
-//   // array.filter
-//   var removeIndex = contacts
-//     .map(function(item) {
-//       return item.id;
-//     })
-//     .indexOf(idnya);
-//   // spread operator ....
-//   contacts.splice(removeIndex, 1);
-//   console.log(contacts);
-// }
-
-// ambil data dari html
-function addData() {
-  var fullname = document.getElementById("fname");
-  var ponenumber = document.getElementById("pnumber");
-  var emaile = document.getElementById("email");
-  console.log(fullname);
-  console.log(ponenumber);
-  console.log(emaile);
-}
-
-
-//ED==
-
-//hapus button
-// document.getElementsByName("hapus").onclick= function(){
-//   cariID = document.getElementsByName("hapus").value;
-//   console.log(cariID);
-// };
 
 view(contacts);
 
