@@ -165,6 +165,7 @@ else{
     gender1 = document.getElementById("r2").value;
   }
   new1.gender = gender1;
+  document.getElementById("tombolku").name= "databaru";
   document.getElementById("table-row").innerHTML = "";
   view(contacts);
 
