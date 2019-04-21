@@ -41,14 +41,14 @@ let contacts = [
     document.getElementById("finder").addEventListener("change",function(){
       var keyword=document.getElementById("finder").value;
       var Table = document.getElementById("table-row");
-      Table.innerHTML = ""
-      view(search(contacts,keyword));
+      Table.innerHTML = "";
+      view(search(contacts,keyword,y));
 
       function search(arr,keyword){
         return arr.filter(function(obj){
           return obj["fullName"].includes(keyword);
         });
-
+        
       }
     })
 //pencarian gender
@@ -63,13 +63,18 @@ if (x == "Male") {
   var Table = document.getElementById("table-row");
       Table.innerHTML = ""
   view(baru);
-}if (x == "Female") {
+}else if (x == "Female") {
   let baru = contacts.filter(function(item) {
     return item.gender == "Female";
   });
   var Table = document.getElementById("table-row");
       Table.innerHTML = ""
   view(baru);
+} else { 
+   var Table = document.getElementById("table-row");
+      Table.innerHTML = "";
+      baru=contacts;
+      view(baru);
 };
 }, false);
 
