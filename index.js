@@ -152,6 +152,7 @@ document.getElementById("tombolku").addEventListener("click", function() {
 }
 else{
   cariId= document.getElementById("tombolku").value;
+  document.getElementById("tombolku").name="databaru"
   console.log(cariId)
   new1=contacts.find(hasil => hasil.id == cariId);
   new1.fullName = document.getElementById("fname").value;
@@ -165,9 +166,19 @@ else{
     gender1 = document.getElementById("r2").value;
   }
   new1.gender = gender1;
-  document.getElementById("tombolku").name= "databaru";
-  document.getElementById("table-row").innerHTML = "";
-  view(contacts);
+   document.getElementById("table-row").innerHTML = "";
+    view(contacts);
+
+  //set value input kosong
+ 
+  document.getElementById("fname").value = "";
+  document.getElementById("pnumber").value = "";
+  document.getElementById("email").value = "";
+  document.getElementById("r1").checked= false;
+  document.getElementById("r2").checked =false;
+
+
+  
 
 }
   }
