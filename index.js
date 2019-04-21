@@ -1,4 +1,4 @@
-const contacts = [
+var contacts = [
   {
     id: 1,
     fullName: "Genna Arnli",
@@ -35,6 +35,8 @@ const contacts = [
     gender: "Male"
   }
 ];
+
+db = [...contacts];
 
 // Pencari with keyword
     document.getElementById("finder").addEventListener("change",function(){
@@ -96,17 +98,17 @@ function view(contacts) {
    let action = row. insertCell(5);
     var element1 = document.createElement("button");
     var element2 = document.createElement("button");
-    element1.value = contacts.id;
+    element1.id = contacts.id;
     element1.innerHTML= "edit";
     element1.setAttribute("onclick", "editya(this.id)");
     element1.name = "edit";
     action.appendChild(element1);
 
-    element2.value = contacts.id;
+    element2.id = contacts.id;
     element2.innerHTML= "delete";
     action.appendChild(element2);
     element2.name= "hapus";
-    element2.setAttribute("onclick", "hapusya(this.value)");
+    element2.setAttribute("onclick", "hapusya(this.id)");
   });
 }
 
@@ -165,6 +167,15 @@ function edit(data, id) {
   // spread operator ...
 }
 
+const hapusya = (id) => {
+
+    var new1= contacts.filter(hasil => hasil.id != id);
+    contacts= new1;
+    document.getElementById("table-row").innerHTML = "";
+    view(contacts)
+      };
+
+
 function remove(data, idnya) {
   // array.filter
   var removeIndex = contacts
@@ -194,6 +205,4 @@ function addData() {
 // };
 
 view(contacts);
-function hapusya(id) {
-  alert(id)
-}
+
